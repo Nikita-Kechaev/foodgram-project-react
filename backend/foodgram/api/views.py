@@ -31,18 +31,19 @@ class IngredientViewSet(ReadOnlyModelViewSet):
 
 class RecipeViewSet(ModelViewSet):
     queryset = Recipe.objects.all()
-    filter_backends = [DjangoFilterBackend]
-    filter_class = AuthorAndTagFilter
     serializer_class = RecipeSerializer
     pagination_class = LimitPageNumberPagination
     permission_classes = [AdminOrAuthorOrReadOnly, ]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = AuthorAndTagFilter
 
     @action(
         detail=True,
         methods=['POST', 'DELETE'],
         url_name="favorite",
         url_path="favorite",
-        permission_classes=[IsAuthenticated]
+        permission_classes=[IsAuthenticated],
+        serializer_class=FavoriteSerializers
     )
     def favorite(self, request, pk=id):
         if request.method == 'POST':
@@ -69,7 +70,8 @@ class RecipeViewSet(ModelViewSet):
         methods=['POST', 'DELETE'],
         url_name="shopping_cart",
         url_path="shopping_cart",
-        permission_classes=[IsAuthenticated]
+        permission_classes=[IsAuthenticated],
+        serializer_class=FavoriteSerializers
     )
     def shopping_cart(self, request, pk=id):
         if request.method == 'POST':
