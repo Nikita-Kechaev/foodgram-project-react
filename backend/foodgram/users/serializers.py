@@ -25,8 +25,7 @@ class CustomUserCreateSerializer(UserCreateSerializer):
 
     class Meta:
         model = User
-        fields = (
-            'first_name', 'last_name', 'email', 'id', 'password', 'username')
+        fields = '__all__'
 
 
 class CustomUserlistSerializer(UserSerializer):
@@ -34,12 +33,10 @@ class CustomUserlistSerializer(UserSerializer):
 
     class Meta:
         model = User
-        fields = (
-            'email', 'id', 'username', 'first_name', 'last_name',
-            'is_subscribed')
+        fields = '__all__'
 
     def get_is_subscribed(self, obj):
         user = self.context.get('request').user
-        if user.is_anonymous:
-            return False
-        return Follow.objects.filter(user=user, author=obj.id).exists()
+        return user.is_anonymous and Follow.objects.filter(
+            user=user, author=obj.id
+        ).exists()

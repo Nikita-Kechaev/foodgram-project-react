@@ -51,9 +51,9 @@ class CustomUserViewset(DjoserViewSet):
         permission_classes=[IsAuthenticated]
     )
     def subscribe(self, request, id=None):
-        user = request.user
-        author = get_object_or_404(User, id=id)
         if request.method == 'POST':
+            user = request.user
+            author = get_object_or_404(User, id=id)
             if user == author:
                 return Response({
                     'errors': 'Вы не можете подписываться на самого себя'
@@ -68,6 +68,8 @@ class CustomUserViewset(DjoserViewSet):
             )
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         if request.method == 'DELETE':
+            user = request.user
+            author = get_object_or_404(User, id=id)
             if user == author:
                 return Response({
                     'errors': 'Вы не можете отписаться от самого себя'
