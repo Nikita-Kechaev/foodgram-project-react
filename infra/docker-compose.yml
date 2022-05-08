@@ -5,10 +5,10 @@ services:
     volumes:
       - /var/lib/postgresql/data/
     env_file:
-      - ../backend/foodgram/foodgram/.env
+      - ../.env
   
   backend:
-    build: ../backend/foodgram/
+    image: nikitakechaev/foodgram_backend
     volumes:
       - static_value:/code/static/
       - media_value:/code/media/
@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
     env_file:
-      - ../backend/foodgram/foodgram/.env
+      - ../.env
   
   nginx:  
     image: nginx:1.21-alpine
