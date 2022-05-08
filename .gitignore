@@ -131,7 +131,7 @@ dmypy.json
 # .idea
 .idea
 
-/*/migrations/
+/*/migrations
 *.env
 env
 venv
