@@ -37,11 +37,11 @@ sudo docker-compose exec backend python manage.py createsuperuser
 * Админ-панель проекта доступна по адресу
 
 ```python
-<http://127.0.0.1:8000/admin>
+http://127.0.0.1:8000/admin
 ```
 
 * Проект доступен по адресу
 
 ```python
-<http://127.0.0.1:8000>
+http://127.0.0.1:8000
 ```

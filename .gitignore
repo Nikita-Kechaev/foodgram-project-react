@@ -139,3 +139,4 @@ static/
 media/
 media_value/
 static_value/
+.vscode
