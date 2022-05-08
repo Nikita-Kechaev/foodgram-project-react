@@ -64,6 +64,7 @@ class RecipeViewSet(ModelViewSet):
             return Response(
                 status=status.HTTP_204_NO_CONTENT
             )
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(
         detail=True,
@@ -93,6 +94,7 @@ class RecipeViewSet(ModelViewSet):
                 f'Рецепт {favorite.recipe} удален из корзины у пользователя'
                 f' {request.user}', status=status.HTTP_204_NO_CONTENT
             )
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(
         detail=False,

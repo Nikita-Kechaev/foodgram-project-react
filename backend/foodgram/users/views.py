@@ -82,3 +82,4 @@ class CustomUserViewset(DjoserViewSet):
                     'errors': 'Вы не можете отписаться от автора, на которого'
                     ' не подписаны. Подпишитесь на него - он классный повар!'
                 })
+        return Response(status=status.HTTP_204_NO_CONTENT)
