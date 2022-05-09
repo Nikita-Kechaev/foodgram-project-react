@@ -1,6 +1,5 @@
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
@@ -33,9 +32,8 @@ class RecipeViewSet(ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
     pagination_class = LimitPageNumberPagination
-    permission_classes = [IsOwnerOrReadOnly, ]
-    filter_backends = [DjangoFilterBackend]
-    filterset_class = AuthorAndTagFilter
+    filter_class = AuthorAndTagFilter
+    permission_classes = [IsOwnerOrReadOnly]
 
     @action(
         detail=True,
