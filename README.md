@@ -90,12 +90,6 @@ scp nginx.conf <username>@<host>:/home/<username>/nginx/default.conf
 scp foodgram_db.json <username>@<host>:/home/<username>/foodgram_db.json
 ```
 
-* Загрузите тестовые данные:
-
-```python
-sudo docker-compose exec backend python manage.py loaddata foodgram_db.json
-```
-
 * Cоздайте .env файл и впишите:
 
     ```python
@@ -160,14 +154,6 @@ sudo docker-compose exec backend python manage.py collectstatic --noinput
 
 ```python
 sudo docker-compose exec backend python manage.py migrate --noinput
-```
-
-Загрузите ингридиенты  в базу данных (необязательно):
-
-* Если файл не указывать, по умолчанию выберется ingredients.json*
-
-```python
-sudo docker-compose exec backend python manage.py load_ingredients <Название файла из директории data>
 ```
 
 Создать суперпользователя Django:
