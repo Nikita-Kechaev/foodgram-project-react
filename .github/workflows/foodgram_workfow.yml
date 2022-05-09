@@ -60,7 +60,6 @@ jobs:
           script: |
             sudo docker-compose stop
             sudo docker-compose rm backend
-            sudo systemctl restart docker
             rm .env
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
