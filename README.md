@@ -1,6 +1,6 @@
 # Foodgram
 
-![example workflow](https://github.com/nikita-kechaev/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)  
+![example workflow](https://github.com/nikita-kechaev/foodgram-project-react/workflows/foodgram_workflow/badge.svg)  
   
 [![Python](https://img.shields.io/badge/-Python-464646?style=flat-square&logo=Python)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/-Django-464646?style=flat-square&logo=Django)](https://www.djangoproject.com/)
@@ -168,6 +168,8 @@ sudo docker-compose exec backend python manage.py createsuperuser
 
 ## Проект в интернете
 
-Проект запущен и доступен по [адресу](http://51.250.29.87/recipes)
-Admin - панель доступна по [адресу](http://51.250.29.87/admin)
-Логин/пароль суперпользователя: admin/qwerty123
+* Проект запущен и доступен по [адресу](http://51.250.29.87/recipes)
+
+* Admin - панель доступна по [адресу](http://51.250.29.87/admin)
+
+* Логин/пароль суперпользователя: admin/qwerty123
