@@ -3,14 +3,14 @@ from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.decorators import action
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from users.pagination import LimitPageNumberPagination
 
 from .filters import AuthorAndTagFilter, IngredientNameFilter
 from .models import Cart, Favorite, Ingredient, Recipe, RecipeIngredient, Tag
-from .permissions import AdminOrAuthorOrReadOnly
+from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from .serializers import (FavoriteSerializers, IngredientSerializer,
                           RecipeSerializer, TagSerializer)
 
@@ -18,13 +18,13 @@ from .serializers import (FavoriteSerializers, IngredientSerializer,
 class TagViewSet(ReadOnlyModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAdminOrReadOnly,)
 
 
 class IngredientViewSet(ReadOnlyModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAdminOrReadOnly,)
     pagination_class = None
     filterset_class = IngredientNameFilter
 
@@ -33,7 +33,7 @@ class RecipeViewSet(ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
     pagination_class = LimitPageNumberPagination
-    permission_classes = [AdminOrAuthorOrReadOnly, ]
+    permission_classes = [IsOwnerOrReadOnly, ]
     filter_backends = [DjangoFilterBackend]
     filterset_class = AuthorAndTagFilter
 
