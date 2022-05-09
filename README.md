@@ -84,6 +84,18 @@ scp docker-compose.yml <username>@<host>:/home/<username>/docker-compose.yml
 scp nginx.conf <username>@<host>:/home/<username>/nginx/default.conf
 ```
 
+* Скопируйте тестовые данные из директории backend/foodgram/data/foodgram_db.json:
+
+```python
+scp foodgram_db.json <username>@<host>:/home/<username>/foodgram_db.json
+```
+
+* Загрузите тестовые данные:
+
+```python
+sudo docker-compose exec backend python manage.py loaddata foodgram_db.json
+```
+
 * Cоздайте .env файл и впишите:
 
     ```python

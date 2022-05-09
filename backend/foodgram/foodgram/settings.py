@@ -11,8 +11,6 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 DEBUG = int(os.getenv("DJANGO_DEBUG", default=0))
 
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000"]
-
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -114,7 +112,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
 }
 
