@@ -46,6 +46,15 @@ sudo docker-compose exec backend python manage.py migrate
 
 sudo docker-compose exec backend python manage.py createsuperuser
 
+* Для наполнения тестовыми рецептами и пользователями данными используйте комманду:
+
+```python
+sudo docker-compose exec backend python manage.py loaddata foodgram_db.json
+```
+
+Наполнение ингредиентов осуществляется за счёт библиотеки django-import-export через админ панель.
+Перейдите в админ панель в модель ингредиентов и укажите файл ingredients.json, который находится в корне проекта foodgram/data/, для импорта, после чего подтвердите импорт - confirm.
+
 * Админ-панель проекта доступна по адресу
 
 ```python
@@ -162,7 +171,7 @@ sudo docker-compose exec backend python manage.py migrate --noinput
 sudo docker-compose exec backend python manage.py createsuperuser
 ```
 
-Проект будет доступен по вашему IP
+Проект будет доступен по вашему IP. Наполнение базы тестовыми данными описано выше.
 
 ## Проект в интернете
 
@@ -170,4 +179,4 @@ sudo docker-compose exec backend python manage.py createsuperuser
 
 * Admin - панель доступна по [адресу](http://51.250.29.87/admin)
 
-* Логин/пароль суперпользователя: admin/qwerty123
+* логин/email/пароль суперпользователя: admin/admin@mail.ru/qwerty123
